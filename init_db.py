@@ -1,3 +1,4 @@
+#create database week1_db
 import psycopg2
 
 conn = psycopg2.connect(database = "week1_db", host="localhost", user="postgres", password="12345678", port="5432")
