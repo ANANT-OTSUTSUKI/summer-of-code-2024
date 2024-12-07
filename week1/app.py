@@ -26,7 +26,7 @@ def index():
 
     sum=0
     for row in i_data:
-        sum=+(row[4]*row[5])
+        sum = sum+(row[4]*row[5])
     cur.execute('''SELECT * FROM staffs ORDER BY s_id''')
     s_data = cur.fetchall()
 
