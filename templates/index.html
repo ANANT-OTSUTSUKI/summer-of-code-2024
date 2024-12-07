@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INFO</title>
+</head>
+<body style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
+    <!-- CUSTOMERS -->
+    <h1 style="color: brown;">CUSTOMERS</h1>
+    <table border="auto">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Mail</th>
+                <th>Contact</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in c_data %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[3] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Add new Customers</h2>
+    <form action="/create_customers" method="post">
+        <input required type="text" name="c_name" placeholder="name">
+        <input required type="text" name="c_mail" placeholder="mail">
+        <input required type="text" name="c_contact" placeholder="contact">
+        <input required type="submit" value="create">
+    </form>
+
+    <h2>Update</h2>
+    <table border="auto">
+        
+        <tbody>
+            {% for row in c_data %}
+            <tr>
+                <td>
+                <form action="/update_customers" method="post">
+                    <label>{{ row[0] }}</label>
+                    <input required type="hidden" name="c_id" value="{{ row[0] }}">
+                    <input required type="text" name="c_name" value="{{ row[1] }}">
+                    <input required type="text" name="c_mail" value="{{ row[2] }}">
+                    <input required type="text" name="c_contact" value="{{ row[3] }}">
+                    <input required type="submit" value="update">
+                </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br><hr style="font-size: large;">
+
+    <!-- TRANSACTIONS -->
+
+    <h1 style="color: brown;">TRANSACTIONS</h1>
+    <table border="auto">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Customer ID</th>
+                <th>Staff ID</th>
+                <th>Amount</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in t_data %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[3] }}</td>
+                <td>{{ row[4] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Add transactions</h2>
+    <form action="/add_transactions" method="post">
+        <input required type="text" name="c_id" placeholder="Customer ID">
+        <input required type="text" name="s_id" placeholder="Staff ID">
+        <input required type="text" name="t_amount" placeholder="Amount">
+        <input required type="text" name="t_desc" placeholder="Category">
+        <input required type="submit" value="add">
+    </form>
+
+    <br><hr style="font-size: larger;">
+    <!-- INVENTORY -->
+
+    <h1 style="color: brown;">INVENTORY</h1>
+    <table border="auto">
+        <thead>
+            <tr>
+                <th>SKU</th>
+                <th>Staff ID</th>
+                <th>Name</th>
+                <th>Description</th>                
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in i_data %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[3] }}</td>
+                <td>{{ row[4] }}</td>
+                <td>{{ row[5] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h3><u>A total of {{sum}}Rs amount of items are in Inventory</u>
+    </h3>
+
+    <h2>Add Items to Inventory</h2>
+    <form action="/add_item" method="post">
+        <input required type="text" name="s_id" placeholder="Staff ID">
+        <input required type="text" name="item_name" placeholder="Name">
+        <input required type="text" name="item_desc" placeholder="Description">
+        <input required type="text" name="item_price" placeholder="Price">
+        <input required type="number" name="item_qty" placeholder="Quantity">
+        <input required type="submit" value="add">
+    </form>
+
+    <h2>Manage inventory quantity</h2>
+    <table border="auto">
+        <tbody>
+            <tr>
+                <td> 
+                    <form action="/update_qty" method="post">
+                        <input required type="text" name="item_sku" placeholder="Item_sku">
+                        <input required type="text" name="qty_update" placeholder="Quantity (+/-)">
+                        <input required type="submit" value="update">
+                    </form>
+
+                </td>
+
+            </tr>
+        </tbody>
+
+    </table>
+    <br><hr style="font-size: larger;">
+     <!-- STAFFS -->
+
+     <h1 style="color: brown;">Staffs</h1>
+     <table border="auto">
+         <thead>
+             <tr>
+                 <th>ID</th>
+                 <th>Name</th>
+                 <th>Mail</th>
+                 <th>Admin</th>
+                 <th>Contact</th>
+             </tr>
+         </thead>
+         <tbody>
+             {% for row in s_data %}
+             <tr>
+                 <td>{{ row[0] }}</td>
+                 <td>{{ row[1] }}</td>
+                 <td>{{ row[2] }}</td>
+                 <td>{{ row[3] }}</td>
+                 <td>{{ row[4] }}</td>
+             </tr>
+             {% endfor %}
+         </tbody>
+     </table>
+ 
+     <h2>Add new Staffs</h2>
+     <form action="/create_staffs" method="post">
+         <input required type="text" name="s_name" placeholder="name">
+         <input required type="text" name="s_mail" placeholder="mail">
+         <select name="s_isAdmin">            
+            <option value = "False">False</option>
+            <option value = "True">True</option>
+         </select>
+         <input required type="text" name="s_contact" placeholder="contact">
+         <input required type="submit" value="create">
+     </form>
+ 
+     <h2>Update</h2>
+     <table border="auto">
+         <tbody>
+             {% for row in s_data %}
+             <tr>
+                 <td>
+                 <form action="/update_staffs" method="post">
+                     <label>{{ row[0] }}</label>
+                     <input required type="hidden" name="s_id" value="{{ row[0] }}">
+                     <input required type="text" name="s_name" value="{{ row[1] }}">
+                     <input required type="text" name="s_mail" value="{{ row[2] }}">
+                     <input required type="text" name="s_isAdmin" value="{{ row[3] }}">
+                     <input required type="text" name="s_contact" value="{{ row[4] }}">
+                     <input required type="submit" value="update">
+                 </form>
+                 </td>
+             </tr>
+             {% endfor %}
+         </tbody>
+     </table>
+
+     <br><hr style="font-size: large;">
+
+ 
+ 
+
+</body>
+</html>
