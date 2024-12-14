@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+<body>
+    <div style="text-align: right;" >
+        <a href="/products/admin_login">Admin Login</a>
+        <a href = "/products/staff_login">Staff Login</a>
+    </div>
+    <br>
+    <center>
+    <h1 >Our Products</h1>
+    <table border="auto">
+        <thead >
+            <tr>
+                <th>Product</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                <td>{{row[1]}}</td>
+                <td>{{row[2]}}</td>
+                <td>{{row[3]}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    </center>
+
+    
+</body>
+</html>

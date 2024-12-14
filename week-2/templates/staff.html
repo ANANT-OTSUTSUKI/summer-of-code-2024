@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+<body>
+    <a href="/logout">Logout</a>
+    <br>
+    <h2>Hello {{user.usern}}</h2>
+    <h1>Inventory</h1>
+    <table border="auto">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Product</td>
+                <td>Description</td>
+                <td>Price</td>
+                <td>Quantity</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td>
+                <td>{{row[2]}}</td>
+                <td>{{row[3]}}</td>
+                <td>{{row[4]}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h2>Update Inventory</h2>
+    <form action="/products/staff/update" method="post">
+        <input type="text" required name="id" placeholder="ID">
+        <input type="text" required name="qty" placeholder="Quantity in/out">
+        <input type="submit" value="Update">
+    </form>
+    
+</body>
+</html>
