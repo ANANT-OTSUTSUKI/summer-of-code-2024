@@ -1,3 +1,6 @@
+Admin:-  (username,password)=(anant,iamadmin),(admin,admin)
+Staff:- (username,password) = (msd007,hello),(ronaldo007,hii)
+
 download postgreSQL. open folder and activate virtual environment and select python interpreter. open terminal and install flask,flask-login,flask-sqlalchemy and psycopg2 using pip. open psql and create database "week2_db"(using "create database week2_db;"). open init_db.py, app.py,admin.py and staff.py and change required fields like port,password etc accordingly. run init_db.py which creates required tables in database week2_db. run app.py and open http://127.0.0.1:1224/ in browser to open the application
 
 in this application, CRUD operations are implemented.Blueprints are made for code to be simpler.Admins and staffs has seperare.UPdate form is given for admin to update product table. Different role and permissions are assigned to ADMIN,STAFF and USER.Login pages are created for admin and staff to login.
