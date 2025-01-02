@@ -123,11 +123,14 @@ def admin():
     s_data=cur.fetchall()
     cur.execute('''SELECT * FROM transactions ORDER BY s_id''')
     t_data=cur.fetchall()
+    cur.execute('''SELECT * FROM logins''')
+    l_data=cur.fetchall()
     conn.commit()
     cur.close()
     conn.close()
 
-    return render_template('admin.html', current_user=current_user,c_data=c_data,s_data=s_data,t_data=t_data)
+    return render_template('admin.html', current_user=current_user,c_data=c_data,s_data=s_data,t_data=t_data,l_data=l_data)
+
 
 @app.route('/staff')
 @login_required
