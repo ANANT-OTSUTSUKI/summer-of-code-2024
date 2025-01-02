@@ -3,7 +3,7 @@
 for Admin {anant:iamadmin}
 for Staff {staff:staff}
 for User {john:user}
-(User above username and passowrd for testing differebt roles and their interfaces)
+(Use above username and passowrd for testing differebt roles and their interfaces)
 
 
 Admin(username:anant) {email: anantweek3.dsoc@yahoo.com,password:iamadmin2024}. Use this to check otp verification.
