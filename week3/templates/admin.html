@@ -131,5 +131,23 @@
         transaction ID: <input type="integer" name="t_id" placeholder="ID">
         <button type="submit"> DELETE </button>
     </form>
+
+    <hr><hr>
+    <h1>LOGIN Details</h1>
+    <table border="auto">
+        <tr>
+            <th>Username</th>
+            <th>Login TIME</th>
+            <th>Login DATE</th>
+        </tr>
+        {% for row in l_data %}
+        <tr>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+    
 </body>
 </html>
